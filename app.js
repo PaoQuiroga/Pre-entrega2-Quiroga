@@ -6,7 +6,7 @@ function ingreso (){
 }
 ingreso()
 
-class consulta{
+class Consulta{
     constructor(prestacion, valor, prepaga){ 
         this.prestacion =prestacion;
         this.valor =valor;
@@ -24,83 +24,40 @@ let valor = [
 
 function cargaConsulta(){
     let prestacion = prompt("ingrese prestacion");
-    let valor = prompt("ingrese valor");
+    let valor = parseInt(prompt("ingrese valor"));
     let prepaga = prompt("ingrese prepaga");
-    const nuevaConsulta = cargaConsulta(prestacion, valor, prepaga);
-    arrayConsulta.push(nuevaConsulta);
+    const nuevaConsulta = new Consulta(prestacion, valor, prepaga); 
+    arrayConsultor.push(nuevaConsulta);
     alert ("prestacion agregada");
 }
 
 function Consultor(){
-    arrayConsulta.forEach((item) => {
-        alert (`consulto por prestacion ${item.prestacion}, valor ${item.valor}, prepaga ${item.prepaga} `);
+    arrayConsultor.forEach((item) => {
+        alert (`consulto por prestacion ${item.prestacion}, valor ${item.valor}, prepaga ${item.prepaga} `)
     });
 }
 
-function finalizarOcontinuar(){prestacion
-    const total = arrayConsulta.reduce((accum + item,valor),0)
-        
+function finalizarCarga(){
+    const total = arrayConsultor.reduce((accum, item)=> accum + item.valor, 0)    
     alert(`total valor a facturar ${total}`)
 }
 
-let arrayConsulta =[]
+let arrayConsultor =[]
 
-let opcion = prompt("Seleccione opcion: \n 6: Ingresar prestacion; \n 7: Seguir cargando; \n 8: Finalizar carga; \n 9: Salir")
+let opcion = prompt("Seleccione opcion: \n 6: Ingresar prestacion; \n 7: Finalizar carga; \n 8: Salir")
 
 
-  while(opcion !=="9"){
+  while(opcion !=="8"){
     if (opcion==="6"){
         cargaConsulta();
     } 
 
     if (opcion==="7"){
-        SeguirCargando()
+        finalizarCarga()
     }
 
-    if (opcion === "8"){
-        finalizarCarga()
-    } 
-
     opcion = prompt(
-        "Ingrese una opcion \n 7: Seguir cargando; \n 8: Finalizar carga; \n 9: Salir")
+        "Ingrese una opcion \n 6: Ingresar prestacion; \n 7: Finalizar carga; \n 8: Salir")
   }
 
 alert("Aguardamos la nueva consulta, saludos!")
-
-
-/* 
-function prestacion (){
-    seleccion = prompt ("Seleccione prestacion a facturar \n 1:grupo+ \n 2:grupo- \n 3:pci+ \n 4:pci- \n 5:pcd \n 6:compatibilidad \n 7: Seguir cargando; \n 8: Salir"
-    );
-
-    if ( seleccion === "1") {
-        valor = 2600
-        console.log(`selecciono grupo+. valor: ${valor} $`); 
-    }
-    else if ( seleccion === "2") {
-        valor = 3000
-        console.log(`selecciono grupo-.valor: ${valor} $`); 
-    }
-    else if ( seleccion === "3") {
-        valor = 14000
-        console.log(`selecciono pci+.valor: ${valor} $`); 
-    }
-    else if ( seleccion === "4") {
-        valor = 3500
-        console.log(`selecciono pci-.valor: ${valor} $`); 
-    }
-    else if ( seleccion === "5") {
-        valor = 3400
-        console.log(`selecciono pcd.valor: ${valor} $`); 
-    }
-    else if ( seleccion === "6") {
-        valor = 15000
-        console.log(`selecciono compatibilidad.valor: ${valor} $`); 
-    }
-
-    seleccion = prompt("seleccionar: \n 7: Seguir cargando; \n 8: Salir")
-}
- */
-
-
-
